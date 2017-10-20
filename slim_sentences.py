@@ -21,10 +21,19 @@ out2_file = open(out2,'w')
 def line_to_stream(sentence):  ###// compute all the words position in one sentence
     stream = []
     for word in sentence.split():
-        if word == '--':
-	   continue
         word = word.strip()
-        re.split('\W+',word)
+	word = word.replace('!','')
+	word = word.replace('--','')
+	word = word.replace('(','')
+	word = word.replace(')','')
+	word = word.replace('-',' ')
+	word = word.replace('$','')
+	word = word.replace(':','')
+	word = word.replace(']','')
+	word = word.replace('?','')
+	word = word.replace(';','')
+	word = word.replace('.','')
+        #re.split('\W+',word)
 	word = word.strip('.').lower()
         stream.append(word)
     # increment the stream -- 0 will be the EOS character
